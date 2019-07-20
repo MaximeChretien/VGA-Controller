@@ -1,0 +1,3 @@
+[submodule "src/vhdl_parts"]
+	path = src/vhdl_parts
+	url = https://framagit.org/MixLeNain/vhdl_parts.git
