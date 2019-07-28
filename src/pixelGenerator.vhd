@@ -1,7 +1,7 @@
 -- VGA_controller pixel generator module
 -- pixel signal generator for VGA_controller
 -- Maxime Chretien (MixLeNain)
--- v1.0
+-- v1.1
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -9,7 +9,7 @@ use ieee.numeric_std.all;
 
 entity pixelGen is
 	generic(
-		constant H_SYNC_value : integer_vector(0 to 3) := (800, 40, 128, 88); -- 800x600 @ 60Hz
+		constant H_SYNC_value : integer_vector(0 to 3) := (800, 40, 128, 88); -- 800x600 @ 60Hz (cf: VGA standards)
 		constant V_SYNC_value : integer_vector(0 to 3) := (600, 1, 4, 23)
 	);
 	port(
@@ -31,17 +31,20 @@ begin
 	
 	process begin
 		wait until rising_edge(clk);
+		-- When it's time to display pixels, diplay them 10 time to convert 80x60 picture to 800x600 screen
 		if(Vsync_count <= V_SYNC_value(0) and Hsync_count <= H_SYNC_value(0)) then
-			addr <= std_logic_vector(to_unsigned(((Vsync_count/10)*(H_SYNC_value(0)/10))+Hsync_count/10,addr'length));
+			addr <= std_logic_vector(to_unsigned(((Vsync_count/10)*(H_SYNC_value(0)/10))+Hsync_count/10,addr'length)); -- rom address
 			data <= dataIn;
-		else
+		else -- When it's not time to display pixels (back porch, sync pulse, front porch)
 			addr <= (others => '0');
 			data <= (others => '0');
 		end if;
 	end process;
 	
+	-- Transmit address to rom component
 	address <= addr;
 	
+	-- Output data bits to correponding output
 	R(2) <= data(7);
 	R(1) <= data(6);
 	R(0) <= data(5);
