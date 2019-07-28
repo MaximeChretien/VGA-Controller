@@ -1,0 +1,278 @@
+EESchema Schematic File Version 4
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "VGA_controller"
+Date "2019-07-28"
+Rev "v1.0"
+Comp "Maxime Chretien"
+Comment1 "with basic DAC using voltage divider"
+Comment2 "Connections between FPGA and VGA connector"
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 2500 1000 0    50   Input ~ 0
+FPGA_RED[0]
+Text GLabel 2500 1500 0    50   Input ~ 0
+FPGA_RED[1]
+Text GLabel 2500 2000 0    50   Input ~ 0
+FPGA_RED[2]
+Text GLabel 2500 2500 0    50   Input ~ 0
+FPGA_GREEN[0]
+Text GLabel 2500 3000 0    50   Input ~ 0
+FPGA_GREEN[1]
+Text GLabel 2500 3500 0    50   Input ~ 0
+FPGA_GREEN[2]
+Text GLabel 2500 4000 0    50   Input ~ 0
+FPGA_BLUE[0]
+Text GLabel 2500 4500 0    50   Input ~ 0
+FPGA_BLUE[1]
+Text GLabel 2500 5000 0    50   Input ~ 0
+FPGA_HSYNC
+Text GLabel 2500 5500 0    50   Input ~ 0
+FPGA_VSYNC
+Text GLabel 5000 1500 2    50   Output ~ 0
+VGA_RED
+Text GLabel 5000 3000 2    50   Output ~ 0
+VGA_GREEN
+Text GLabel 5000 4250 2    50   Output ~ 0
+VGA_BLUE
+Text GLabel 5000 5000 2    50   Output ~ 0
+VGA_HSYNC
+Text GLabel 5000 5500 2    50   Output ~ 0
+VGA_VSYNC
+Text GLabel 5000 6000 2    50   Output ~ 0
+VGA_GND(GENERAL,RED,GREEN,BLUE,HSYNC,VSYNC)
+Text GLabel 2500 6000 0    50   Input ~ 0
+FPGA_GND
+$Comp
+L Device:R R2
+U 1 1 5D3DAE13
+P 3350 1500
+F 0 "R2" V 3143 1500 50  0000 C CNN
+F 1 "1K" V 3234 1500 50  0000 C CNN
+F 2 "" V 3280 1500 50  0001 C CNN
+F 3 "~" H 3350 1500 50  0001 C CNN
+	1    3350 1500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5D3DBB96
+P 3350 1000
+F 0 "R1" V 3143 1000 50  0000 C CNN
+F 1 "2K" V 3234 1000 50  0000 C CNN
+F 2 "" V 3280 1000 50  0001 C CNN
+F 3 "~" H 3350 1000 50  0001 C CNN
+	1    3350 1000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R6
+U 1 1 5D3DC3BD
+P 3750 2000
+F 0 "R6" V 3543 2000 50  0000 C CNN
+F 1 "500" V 3634 2000 50  0000 C CNN
+F 2 "" V 3680 2000 50  0001 C CNN
+F 3 "~" H 3750 2000 50  0001 C CNN
+	1    3750 2000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R10
+U 1 1 5D3DC693
+P 4150 1500
+F 0 "R10" V 3943 1500 50  0000 C CNN
+F 1 "100" V 4034 1500 50  0000 C CNN
+F 2 "" V 4080 1500 50  0001 C CNN
+F 3 "~" H 4150 1500 50  0001 C CNN
+	1    4150 1500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 5D3DC763
+P 3350 4500
+F 0 "R5" V 3143 4500 50  0000 C CNN
+F 1 "220" V 3234 4500 50  0000 C CNN
+F 2 "" V 3280 4500 50  0001 C CNN
+F 3 "~" H 3350 4500 50  0001 C CNN
+	1    3350 4500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R13
+U 1 1 5D3DD8B5
+P 4150 4500
+F 0 "R13" V 3943 4500 50  0000 C CNN
+F 1 "220" V 4034 4500 50  0000 C CNN
+F 2 "" V 4080 4500 50  0001 C CNN
+F 3 "~" H 4150 4500 50  0001 C CNN
+	1    4150 4500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2500 5000 5000 5000
+Wire Wire Line
+	5000 5500 2500 5500
+Wire Wire Line
+	2500 6000 3750 6000
+$Comp
+L Device:R R8
+U 1 1 5D3E079C
+P 3750 4000
+F 0 "R8" V 3543 4000 50  0000 C CNN
+F 1 "1K" V 3634 4000 50  0000 C CNN
+F 2 "" V 3680 4000 50  0001 C CNN
+F 3 "~" H 3750 4000 50  0001 C CNN
+	1    3750 4000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2500 4500 3200 4500
+Wire Wire Line
+	3500 4500 4000 4500
+Wire Wire Line
+	4300 4500 4750 4500
+Wire Wire Line
+	4750 4500 4750 4250
+Wire Wire Line
+	4750 4250 5000 4250
+Wire Wire Line
+	3900 4000 4750 4000
+Wire Wire Line
+	4750 4000 4750 4250
+Connection ~ 4750 4250
+Wire Wire Line
+	3600 4000 2500 4000
+$Comp
+L Device:R R3
+U 1 1 5D3E2FEA
+P 3350 2500
+F 0 "R3" V 3143 2500 50  0000 C CNN
+F 1 "2K" V 3234 2500 50  0000 C CNN
+F 2 "" V 3280 2500 50  0001 C CNN
+F 3 "~" H 3350 2500 50  0001 C CNN
+	1    3350 2500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 5D3E32B8
+P 3750 3500
+F 0 "R7" V 3543 3500 50  0000 C CNN
+F 1 "500" V 3634 3500 50  0000 C CNN
+F 2 "" V 3680 3500 50  0001 C CNN
+F 3 "~" H 3750 3500 50  0001 C CNN
+	1    3750 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R12
+U 1 1 5D3E35A4
+P 4150 3000
+F 0 "R12" V 3943 3000 50  0000 C CNN
+F 1 "100" V 4034 3000 50  0000 C CNN
+F 2 "" V 4080 3000 50  0001 C CNN
+F 3 "~" H 4150 3000 50  0001 C CNN
+	1    4150 3000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R11
+U 1 1 5D3E3A3C
+P 4150 2500
+F 0 "R11" V 3943 2500 50  0000 C CNN
+F 1 "500" V 4034 2500 50  0000 C CNN
+F 2 "" V 4080 2500 50  0001 C CNN
+F 3 "~" H 4150 2500 50  0001 C CNN
+	1    4150 2500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5D3E40A5
+P 3350 3000
+F 0 "R4" V 3143 3000 50  0000 C CNN
+F 1 "1K" V 3234 3000 50  0000 C CNN
+F 2 "" V 3280 3000 50  0001 C CNN
+F 3 "~" H 3350 3000 50  0001 C CNN
+	1    3350 3000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3900 3500 4750 3500
+Wire Wire Line
+	4750 3500 4750 3000
+Wire Wire Line
+	4750 3000 5000 3000
+Wire Wire Line
+	4300 2500 4750 2500
+Wire Wire Line
+	4750 2500 4750 3000
+Connection ~ 4750 3000
+Wire Wire Line
+	4300 3000 4750 3000
+Wire Wire Line
+	4000 3000 3500 3000
+Wire Wire Line
+	3600 3500 2500 3500
+Wire Wire Line
+	3200 3000 2500 3000
+Wire Wire Line
+	2500 2500 3200 2500
+Wire Wire Line
+	3500 2500 4000 2500
+$Comp
+L Device:R R9
+U 1 1 5D3EA727
+P 4150 1000
+F 0 "R9" V 3943 1000 50  0000 C CNN
+F 1 "500" V 4034 1000 50  0000 C CNN
+F 2 "" V 4080 1000 50  0001 C CNN
+F 3 "~" H 4150 1000 50  0001 C CNN
+	1    4150 1000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2500 1000 3200 1000
+Wire Wire Line
+	2500 1500 3200 1500
+Wire Wire Line
+	2500 2000 3600 2000
+Wire Wire Line
+	3500 1000 4000 1000
+Wire Wire Line
+	3500 1500 4000 1500
+Wire Wire Line
+	3900 2000 4750 2000
+Wire Wire Line
+	4750 2000 4750 1500
+Wire Wire Line
+	4750 1500 5000 1500
+Wire Wire Line
+	4300 1500 4750 1500
+Connection ~ 4750 1500
+Wire Wire Line
+	4300 1000 4750 1000
+Wire Wire Line
+	4750 1000 4750 1500
+$Comp
+L power:GND #PWR01
+U 1 1 5D3EEF65
+P 3750 6100
+F 0 "#PWR01" H 3750 5850 50  0001 C CNN
+F 1 "GND" H 3755 5927 50  0000 C CNN
+F 2 "" H 3750 6100 50  0001 C CNN
+F 3 "" H 3750 6100 50  0001 C CNN
+	1    3750 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3750 6100 3750 6000
+Connection ~ 3750 6000
+Wire Wire Line
+	3750 6000 5000 6000
+$EndSCHEMATC
